@@ -4,7 +4,8 @@
   "description": "Creating an MPA with Express.JS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/app.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/fanerotim/JS-Web--Express.JS-Workshop--Movie-Magic/issues"
   },
-  "homepage": "https://github.com/fanerotim/JS-Web--Express.JS-Workshop--Movie-Magic#readme"
+  "homepage": "https://github.com/fanerotim/JS-Web--Express.JS-Workshop--Movie-Magic#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
 }
