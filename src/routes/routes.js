@@ -6,6 +6,5 @@ const notFoundController = require('../controllers/404Controller');
 
 router.use(homeController);
 router.use(aboutController);
-router.use(notFoundController);
 
 module.exports = router;

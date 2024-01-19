@@ -19,6 +19,12 @@ app.use(router);
 
 app.use('/static', express.static('src/static'));
 
+
+// handles 404 error
+app.get('*', (req, res) => {
+    res.status(404).render('404', {layout: false})
+})
+
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`)
 })
