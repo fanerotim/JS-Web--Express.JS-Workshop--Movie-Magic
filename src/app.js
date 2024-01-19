@@ -18,6 +18,8 @@ let router = require('./routes/routes');
 
 app.use(router)
 
+app.use('/static', express.static('src/static'))
+
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`)
 })
