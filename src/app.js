@@ -1,6 +1,11 @@
 const express = require('express');
 let handlebars = require('express-handlebars');
 let path = require('path');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://127.0.0.1:27017/magic_movie')
+    .then(() => console.log('Database connected'))
+
 
 let port = 6969;
 
