@@ -1,17 +1,19 @@
 let router = require('express').Router();
-let database = require('../database');
 
-router.get('/details/:movieId', (req, res) => {
-    let movieId = Number(req.params.movieId);
-    let movieInfo = database.filter(movie => movie.id === movieId);
+let Movies = require('../models/Movies');
+
+router.get('/details/:movieId', async (req, res) => {
+    let movieId = req.params.movieId;
+    let movies = await Movies.findById(movieId).lean();
     
+    //I have to fix the rating (stars)
     let ratingArr = [];
-
-    for (let i = 0; i < movieInfo[0].rating; i++) {
+    
+    for (let i = 0; i < movies.rating; i++) {
         ratingArr.push(i);
     }
-    movieInfo[0]['stars'] = ratingArr;
-    res.render('details', {layout: false, movieInfo, ratingArr});
+    movies['stars'] = ratingArr;
+    res.render('details', {layout: false, movies, ratingArr});
     
 })
 

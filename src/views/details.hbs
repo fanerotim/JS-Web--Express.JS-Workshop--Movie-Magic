@@ -32,28 +32,26 @@
                 <div class="main_card">
                     <div class="card_left">
                         <div class="card_datails">
-                            {{#each movieInfo}}
-                            <h1>{{title}}</h1>
+                            <h1>{{movies.title}}</h1>
                             <div class="card-movie">
                                 <div class="first-info">
-                                    <p class="card-genre">Genre: {{genre}}</p>
-                                    <p class="card-director">Directror: {{director}}</p>
+                                    <p class="card-genre">Genre: {{movies.genre}}</p>
+                                    <p class="card-director">Directror: {{movies.director}}</p>
                                 </div>
                                 <div class="second-info">
-                                    <p class="card-year">Year: {{year}}</p>
-                                    <p class="card-ranking">Rating: <span id="stars">{{#each stars}}&#x2605;{{/each}}</span></p>
+                                    <p class="card-year">Year: {{movies.year}}</p>
+                                    <p class="card-ranking">Rating: <span id="stars">{{#each rating}}&#x2605;{{/each}}</span></p>
                                 </div>
 
                             </div>
 
-                            <p class="disc">Description: {{description}}.</p>
+                            <p class="disc">Description: {{movies.description}}.</p>
                         </div>
                     </div>
                     <div class="card_right">
-                        <img src="{{imageUrl}}"
+                        <img src="{{movies.imageUrl}}"
                             alt="image">
                     </div>
-                    {{/each}}
                 </div>
 
             </section>
