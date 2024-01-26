@@ -1,7 +1,7 @@
 let router = require('express').Router();
 let express = require('express');
 
-const Create = require('../models/Create')
+const Movies = require('../models/Movies')
 
 router.get('/create', (req, res) => {
     res.render('create', {layout: false})
@@ -10,7 +10,7 @@ router.get('/create', (req, res) => {
 router.post('/create', express.urlencoded({extended: false}), (req, res) => {
     let newMovie = req.body;
     
-    Create.create(newMovie);
+    Movies.create(newMovie);
     res.redirect('/')
 })
 

@@ -1,9 +1,11 @@
 const router = require('express').Router();
 
-let database = require('../database');
+const Movies = require('../models/Movies');
 
-router.get('/', (req, res) => {
-    res.render('home', {layout: false, database});
+router.get('/', async (req, res) => {
+
+    const movies = await Movies.find().lean();
+    res.render('home', {layout: false, movies});
 })
 
 module.exports = router;
