@@ -5,7 +5,8 @@ const aboutController = require('../controllers/aboutController');
 const addMovieController = require('../controllers/addMovieController');
 const detailsController = require('../controllers/detailsController');
 const searchController = require('../controllers/searchController');
-const createCastController = require('../controllers/createCastController')
+const createCastController = require('../controllers/createCastController');
+const attachCastController = require('../controllers/attachController');
 
 router.use(homeController);
 router.use(aboutController);
@@ -13,5 +14,6 @@ router.use(addMovieController);
 router.use(detailsController);
 router.use(searchController);
 router.use(createCastController);
+router.use(attachCastController);
 
 module.exports = router;
