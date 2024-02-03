@@ -33,7 +33,12 @@ router.post('/register', express.urlencoded({extended: false}), (req, res) => {
                             res.cookie('authorization', token);
                             res.redirect('/');
                         })
+                } else {
+                    res.send('Password mismatch. Please go back to Register page and try again.')
+                    
                 }
+            } else {
+                res.send('This user already exists in the database. Please try again.')
             }
         });
 })
