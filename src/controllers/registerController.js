@@ -11,36 +11,27 @@ router.get('/register', (req, res) => {
     res.render('register', {layout: false});
 })
 
-router.post('/register', express.urlencoded({extended: false}), (req, res) => {
+router.post('/register', express.urlencoded({extended: false}), async (req, res) => {
     const {email, password, rePassword} = req.body;
+
+    let user = await User.find({email});
     
-    User.find({email})
-        .then(result => {
-            if (result.length === 0) {
-                if (password === rePassword) {
-                    let hash = bcrypt.hash(password, 12)
-                        .then((hashedPassword) => {
-                            User.create({
-                                email,
-                                password: hashedPassword
-                            })
+    if (user.length > 0) {
+        return res.send('This user already exists in the database. Please try again.')
+    }
 
-                            const payload = {
-                                email,
-                            }
+    if (password !== rePassword) {
+        return res.send('Password mismatch. Please try again.')
+    }
 
-                            let token = jwt.sign(payload, SECRET, {expiresIn: '2h'});
-                            res.cookie('authorization', token);
-                            res.redirect('/');
-                        })
-                } else {
-                    res.send('Password mismatch. Please go back to Register page and try again.')
-                    
-                }
-            } else {
-                res.send('This user already exists in the database. Please try again.')
-            }
-        });
+    let hashedPassword = await bcrypt.hash(password, 12);
+
+    User.create({
+        email,
+        password: hashedPassword
+    })
+    
+    res.redirect('/');
 })
 
 module.exports = router;
