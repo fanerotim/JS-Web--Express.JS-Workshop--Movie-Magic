@@ -30,6 +30,9 @@ router.post('/register', express.urlencoded({extended: false}), async (req, res)
         email,
         password: hashedPassword
     })
+
+    const token = jwt.sign({email}, SECRET);
+    res.cookie('auth', token)
     
     res.redirect('/');
 })
