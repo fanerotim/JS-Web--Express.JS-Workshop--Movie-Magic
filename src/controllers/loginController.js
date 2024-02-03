@@ -8,7 +8,8 @@ const User = require('../models/User');
 let SECRET = 'mySecret'
 
 router.get('/login', (req, res) => {
-    res.render('login', { layout: false });
+    let token = req.headers.cookie;
+    res.render('login', {token});
 })
 
 router.post('/login', express.urlencoded({ extended: false }), async (req, res) => {

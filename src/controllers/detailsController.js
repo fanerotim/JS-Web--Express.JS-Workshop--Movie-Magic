@@ -14,7 +14,7 @@ router.get('/details/:movieId', async (req, res) => {
 
     let castInfo = await Movies.findById(movieId).populate('cast');
 
-    res.render('details', {layout: false, movies, ratingArr});
+    res.render('details', {movies, ratingArr});
     
 })
 

@@ -27,7 +27,7 @@ app.use(cookieParser());
 
 // handles 404 error
 app.get('*', (req, res) => {
-    res.status(404).render('404', {layout: false})
+    res.status(404).render('404')
 })
 
 app.listen(port, () => {

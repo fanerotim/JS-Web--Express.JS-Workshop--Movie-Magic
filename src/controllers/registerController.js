@@ -8,7 +8,7 @@ const User = require('../models/User');
 let SECRET = 'mySecret'
 
 router.get('/register', (req, res) => {
-    res.render('register', {layout: false});
+    res.render('register');
 })
 
 router.post('/register', express.urlencoded({extended: false}), async (req, res) => {

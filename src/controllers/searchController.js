@@ -4,7 +4,8 @@ let Movies = require('../models/Movies');
 
 router.get('/search', async (req, res) => {
     let movies = await Movies.find().lean();
-    res.render('search', {layout: false, movies})
+    let token = req.headers.cookie;
+    res.render('search', {movies, token})
 })
 
 router.get('/search-result', async (req, res) => {
@@ -12,11 +13,13 @@ router.get('/search-result', async (req, res) => {
     let genre = req.query.genre;
     let year = req.query.year;
 
+    let token = req.headers.cookie;
+
     //I am repeating this request, but will leave it like so for now
     let movies = await Movies.find().lean();
     let result = movies.filter(movie => movie.title === title && title !== '' || movie.genre === genre && genre !== '' || movie.year === year && year !== '');
     
-    res.render('search-result', {layout: false, result})
+    res.render('search-result', {result, token})
 })
 
 module.exports = router;
