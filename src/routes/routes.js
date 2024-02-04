@@ -9,6 +9,7 @@ const createCastController = require('../controllers/createCastController');
 const attachCastController = require('../controllers/attachController');
 const registerController = require('../controllers/registerController');
 const loginController = require('../controllers/loginController');
+const logoutController = require('../controllers/logoutController');
 
 router.use(homeController);
 router.use(aboutController);
@@ -19,5 +20,6 @@ router.use(createCastController);
 router.use(attachCastController);
 router.use(registerController);
 router.use(loginController);
+router.use(logoutController);
 
 module.exports = router;
