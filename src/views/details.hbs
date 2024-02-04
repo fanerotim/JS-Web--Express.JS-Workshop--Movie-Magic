@@ -23,10 +23,12 @@
                     <p class="disc">{{movies.description}}</p>
                 </div>
 
+                {{#if authorized}}
                 <div class="details-btn">
                     <a href="/edit/{{movies._id}}" id="edit-button">Edit</a>
                     <a href="/delete/{{movies._id}}" id="delete-button">Delete</a>
                 </div>
+                {{/if}}
             </div>
             <div class="card_right">
                 <img src="{{movies.imageUrl}}" alt="image">
