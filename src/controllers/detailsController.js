@@ -5,6 +5,7 @@ let Movies = require('../models/Movies');
 router.get('/details/:movieId', async (req, res) => {
     let movieId = req.params.movieId;
     let movies = await Movies.findById(movieId).populate('cast').lean();
+    let token = req.headers.cookie;
  
     let ratingArr = [];
     
@@ -14,7 +15,7 @@ router.get('/details/:movieId', async (req, res) => {
 
     let castInfo = await Movies.findById(movieId).populate('cast');
 
-    res.render('details', {movies, ratingArr});
+    res.render('details', {movies, ratingArr, token});
     
 })
 
