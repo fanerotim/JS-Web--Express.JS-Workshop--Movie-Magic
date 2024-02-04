@@ -12,12 +12,10 @@ router.get('/edit/:movieId', async (req, res) => {
 })
 
 router.post('/edit/:movieId', urlencoded({extended: false}), async (req, res) => {
-    let updatedMovieInfo = req.body;
+    let movieId = req.params.movieId;
+    let updatedMovieInfo = req.body
 
-    let movieInfo = await Movies.find({title: updatedMovieInfo.title})
-    let movieId = movieInfo[0]._id;
-    
-    let movie = await Movies.findByIdAndUpdate(movieId, updatedMovieInfo);
+    let movieInfo = await Movies.findByIdAndUpdate(movieId, updatedMovieInfo)
     res.redirect(`/details/${movieId}`);
 })  
 
