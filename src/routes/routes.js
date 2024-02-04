@@ -11,6 +11,8 @@ const registerController = require('../controllers/registerController');
 const loginController = require('../controllers/loginController');
 const logoutController = require('../controllers/logoutController');
 const editController = require('../controllers/editController');
+const deleteController = require('../controllers/deleteController');
+
 
 router.use(homeController);
 router.use(aboutController);
@@ -23,5 +25,6 @@ router.use(registerController);
 router.use(loginController);
 router.use(logoutController);
 router.use(editController);
+router.use(deleteController);
 
 module.exports = router;
