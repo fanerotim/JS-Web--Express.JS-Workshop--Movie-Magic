@@ -1,50 +1,50 @@
- <main>
+<main>
 
-            <section id="details-page">
+    <section id="details-page">
 
-                <div class="main_card">
-                    <div class="card_left">
-                        <div class="card_datails">
+        <div class="main_card">
+            <div class="card_left">
+                <div class="card_datails">
 
-                            <h1>{{movies.title}}</h1>
-                            <div class="card-movie">
-                                <div class="first-info">
-                                    <p class="card-genre">Genre: {{movies.genre}}</p>
-                                    <p class="card-director">Directror: {{movies.director}}</p>
-                                </div>
-                                <div class="second-info">
-                                    <p class="card-year">Year: {{movies.year}}</p>
-                                    <p class="card-ranking">Rating: <span id="stars">{{#each ratingArr}}&#x2605;{{/each}}</span></p>
-                                </div>
-
-                            </div>
-
-                            <p class="disc">{{movies.description}}</p>
+                    <h1>{{movies.title}}</h1>
+                    <div class="card-movie">
+                        <div class="first-info">
+                            <p class="card-genre">Genre: {{movies.genre}}</p>
+                            <p class="card-director">Directror: {{movies.director}}</p>
                         </div>
+                        <div class="second-info">
+                            <p class="card-year">Year: {{movies.year}}</p>
+                            <p class="card-ranking">Rating: <span id="stars">{{#each ratingArr}}&#x2605;{{/each}}</span>
+                            </p>
+                        </div>
+
                     </div>
-                    <div class="card_right">
-                        <img src="{{movies.imageUrl}}" alt="image">
-                    </div>
+
+                    <p class="disc">{{movies.description}}</p>
                 </div>
+            </div>
+            <div class="card_right">
+                <img src="{{movies.imageUrl}}" alt="image">
+            </div>
+        </div>
 
-                <div class="main-cast-card">
-                    {{#each movies.cast}}
-                    <div class="cast-card">
-                        <div class="card-img">
-                            <img src="{{imageUrl}}"
-                                alt="cast">
-                        </div>
-                        <div class="cast-info">
-                            <h1>{{name}}</h1>
-                            <h3>Age: {{age}}</h3>
-                            <h3>Born: {{born}}</h3>
-                            <h3>Name in Movie: {{nameInMovie}}</h3>
-                        </div>
-                    </div>
-                    {{/each}}
+        <div class="main-cast-card">
+            {{#each movies.cast}}
+            <div class="cast-card">
+                <div class="card-img">
+                    <img src="{{imageUrl}}" alt="cast">
                 </div>
-    </div>
+                <div class="cast-info">
+                    <h1>{{name}}</h1>
+                    <h3>Age: {{age}}</h3>
+                    <h3>Born: {{born}}</h3>
+                    <h3>Name in Movie: {{nameInMovie}}</h3>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        </div>
 
     </section>
 
-    </main>
+</main>
