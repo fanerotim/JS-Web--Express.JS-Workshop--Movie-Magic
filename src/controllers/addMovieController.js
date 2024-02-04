@@ -4,7 +4,8 @@ let express = require('express');
 const Movies = require('../models/Movies')
 
 router.get('/create', (req, res) => {
-    res.render('create', {layout: false})
+    let token = req.headers.cookie;
+    res.render('create', {token})
 })
 
 router.post('/create', express.urlencoded({extended: false}), (req, res) => {

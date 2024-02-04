@@ -10,7 +10,7 @@ router.get('/attach/cast/:castId', async (req, res) => {
     let movie = await Movies.findById(castId).lean();
     let cast = await Cast.find().lean();
 
-    res.render('cast-attach', {layout: false, movie, cast})
+    res.render('cast-attach', {movie, cast})
 })
 
 router.post('/attach/cast/:castId', express.urlencoded({extended: false}), async (req, res) => {
