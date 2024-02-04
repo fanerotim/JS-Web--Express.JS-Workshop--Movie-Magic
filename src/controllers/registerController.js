@@ -26,12 +26,17 @@ router.post('/register', express.urlencoded({extended: false}), async (req, res)
 
     let hashedPassword = await bcrypt.hash(password, 12);
 
-    User.create({
+    let newUser = await User.create({
         email,
         password: hashedPassword
     })
 
-    const token = jwt.sign({email}, SECRET);
+    let payload = {
+        email,
+        id: newUser._id
+    }
+
+    const token = jwt.sign(payload, SECRET);
     res.cookie('auth', token)
     
     res.redirect('/');

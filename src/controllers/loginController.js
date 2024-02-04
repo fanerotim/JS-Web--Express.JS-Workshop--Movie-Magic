@@ -23,9 +23,14 @@ router.post('/login', express.urlencoded({ extended: false }), async (req, res) 
 
     let hashedPassword = userInfo[0].password;
     let result = await bcrypt.compare(password, hashedPassword);
+
+    let payload = {
+        email,
+        id: userInfo[0]._id
+    }
     
     if (result) {
-        let token = jwt.sign(email, SECRET);
+        let token = jwt.sign(payload, SECRET);
         res.cookie('auth', token);
         res.redirect('/')
     } else {
