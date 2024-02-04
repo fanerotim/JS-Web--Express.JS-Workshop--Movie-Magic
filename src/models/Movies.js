@@ -29,10 +29,10 @@ const moviesSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'Cast'
     }],
-    creatorId: {
-        type: String,
-        required: true
-    }
+    // creatorId: {
+    //     type: String,
+    //     required: true
+    // }
 })
 
 let Movies = mongoose.model('Movies', moviesSchema);
