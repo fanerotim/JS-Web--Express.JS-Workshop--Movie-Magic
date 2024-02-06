@@ -1,4 +1,4 @@
-const auth = (req, res, next) => {
+exports.auth = (req, res, next) => {
     let token = req.headers.cookie;
 
     if (token) {
@@ -8,4 +8,11 @@ const auth = (req, res, next) => {
     next();
 }
 
-module.exports = auth;
+exports.isAuthenticated = (req, res) => {
+    let token = req.cookies;
+
+    if (!token.auth) {
+        res.status(402).send('Unauthorized')
+    }
+}
+

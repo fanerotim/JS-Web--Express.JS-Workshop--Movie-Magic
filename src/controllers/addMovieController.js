@@ -2,8 +2,9 @@ let router = require('express').Router();
 let jwt = require('jsonwebtoken');
 
 const Movies = require('../models/Movies')
+const {isAuthenticated} = require('../middlewares/authMiddleware');
 
-router.get('/create', (req, res) => {
+router.get('/create', isAuthenticated, (req, res) => {
     res.render('create')
 })
 
