@@ -3,19 +3,16 @@ const router = express.Router();
 
 const Movies = require('../models/Movies');
 const Cast = require('../models/Cast');
-const { urlencoded } = require('express');
 
 router.get('/attach/cast/:castId', async (req, res) => {
     let castId = req.params.castId;
     let movie = await Movies.findById(castId).lean();
     let cast = await Cast.find().lean();
 
-    let token = req.headers.cookie;
-
-    res.render('cast-attach', {movie, cast, token})
+    res.render('cast-attach', {movie, cast})
 })
 
-router.post('/attach/cast/:castId', express.urlencoded({extended: false}), async (req, res) => {
+router.post('/attach/cast/:castId', async (req, res) => {
     let castId = req.params.castId;
     const castName = req.body.cast;
 

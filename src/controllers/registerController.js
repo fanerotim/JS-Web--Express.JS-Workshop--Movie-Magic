@@ -11,7 +11,7 @@ router.get('/register', (req, res) => {
     res.render('register');
 })
 
-router.post('/register', express.urlencoded({extended: false}), async (req, res) => {
+router.post('/register', async (req, res) => {
     const {email, password, rePassword} = req.body;
 
     let user = await User.find({email});
@@ -30,16 +30,8 @@ router.post('/register', express.urlencoded({extended: false}), async (req, res)
         email,
         password: hashedPassword
     })
-
-    let payload = {
-        email,
-        id: newUser._id
-    }
-
-    const token = jwt.sign(payload, SECRET);
-    res.cookie('auth', token)
-    
-    res.redirect('/');
+ 
+    res.redirect('/login');
 })
 
 module.exports = router;

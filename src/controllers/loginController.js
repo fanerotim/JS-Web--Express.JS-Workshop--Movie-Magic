@@ -8,11 +8,10 @@ const User = require('../models/User');
 let SECRET = 'mySecret'
 
 router.get('/login', (req, res) => {
-    let token = req.headers.cookie;
-    res.render('login', {token});
+    res.render('login');
 })
 
-router.post('/login', express.urlencoded({ extended: false }), async (req, res) => {
+router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     let userInfo = await User.find({ email });
@@ -31,6 +30,7 @@ router.post('/login', express.urlencoded({ extended: false }), async (req, res) 
     
     if (result) {
         let token = jwt.sign(payload, SECRET);
+        res.locals = token;
         res.cookie('auth', token);
         res.redirect('/')
     } else {

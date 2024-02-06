@@ -7,7 +7,7 @@ router.get('/delete/:movieId', async (req, res) => {
 
     let movieToDelete = await Movies.findByIdAndDelete(movieId);
     
-    res.redirect('/')
+    res.redirect('/');
 })
 
 module.exports = router;

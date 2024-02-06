@@ -4,11 +4,10 @@ const router = express.Router();
 const Cast = require('../models/Cast')
 
 router.get('/create-cast', (req, res) => {
-    let token = req.headers.cookie;
-    res.render('cast-create', {token})
+    res.render('cast-create')
 })
 
-router.post('/create-cast', express.urlencoded({extended: false}), (req, res) => {
+router.post('/create-cast', (req, res) => {
     let newCast = req.body;
     Cast.create(newCast);
 

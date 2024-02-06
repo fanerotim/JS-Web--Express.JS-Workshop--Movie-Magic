@@ -7,7 +7,6 @@ const jwt = require('jsonwebtoken')
 router.get('/details/:movieId', async (req, res) => {
     let movieId = req.params.movieId;
     let movies = await Movies.findById(movieId).populate('cast').lean();
-    let token = req.headers.cookie;
  
     let ratingArr = [];
     
@@ -28,7 +27,7 @@ router.get('/details/:movieId', async (req, res) => {
         authorized = creatorId;
     }
 
-    res.render('details', {movies, ratingArr, token, authorized});
+    res.render('details', {movies, ratingArr, authorized});
     
 })
 

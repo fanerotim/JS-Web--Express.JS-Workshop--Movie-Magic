@@ -1,15 +1,13 @@
 let router = require('express').Router();
-let express = require('express');
 let jwt = require('jsonwebtoken');
 
 const Movies = require('../models/Movies')
 
 router.get('/create', (req, res) => {
-    let token = req.headers.cookie;
-    res.render('create', {token})
+    res.render('create')
 })
 
-router.post('/create', express.urlencoded({extended: false}), (req, res) => {
+router.post('/create', (req, res) => {
     let newMovie = req.body;
 
     let cookie = req.headers.cookie.split('=');
